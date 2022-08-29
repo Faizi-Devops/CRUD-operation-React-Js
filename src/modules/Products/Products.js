@@ -4,6 +4,12 @@ import data from "./Data";
 let Products = () => {
     let [product, setProduct] = useState(data);
     console.log(product);
+
+    let onDeleteHandler = (id) =>{
+        let newFilterProducts=product.filter((value)=>value.id !=id);
+        setProduct(newFilterProducts);
+
+    }
     return (
         <div style={{padding:15}}>
 {/* //Model */}
@@ -63,7 +69,7 @@ let Products = () => {
                     <td scope="col"><span class="badge bg-primary">{value.price}</span></td>
                     <td scope="col">{value.category}</td>
                     <td scope="col"><img src={value.image} className="A" /></td>
-                    <td scope="col"><button type="button" class="btn btn-primary back">Delete</button>
+                    <td scope="col"><button type="button" class="btn btn-primary back" onClick={()=>onDeleteHandler(value.id)}>Delete</button>
                     <button type="button" class="btn btn-success mad bac">Edit</button>
                     </td>
 
