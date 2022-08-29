@@ -6,8 +6,38 @@ let Products = () => {
     console.log(product);
     return (
         <div style={{padding:15}}>
-            <div className="cen"><button type="button" class="btn btn-warning">Add Product</button></div>
+{/* //Model */}
+{/* <!-- Button trigger modal --> */}
+<div className="cen"><button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product</button></div>
+
+
+
+{/* <!-- Modal --> */}
+<div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+        ...
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{/* End model */}
+            
             <div><h1 className="h">List of Products</h1></div>
+            
             <table className="table">
                 <tr>
                     <th scope="col" style={{width:"3%"}} className="cen">#ID</th>
@@ -23,6 +53,7 @@ let Products = () => {
 
 
                {product.map((value,index)=>{
+                console.log(value)
 
                 return(
                     <tr>
