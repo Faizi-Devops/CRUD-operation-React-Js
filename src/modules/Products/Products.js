@@ -5,9 +5,66 @@ let Products = () => {
     let [product, setProduct] = useState(data);
     console.log(product);
 
+    let [title,setTitle]=useState();
+    let [description,setDescription]=useState();
+    let [category,setCategory]=useState();
+    let [price,setPrice]=useState();
+    let [imageURL,setImageURL]=useState();
+
+    let mtle = (e) => {
+      setTitle(e.target.value);
+
+    }
+    let desc = (e) =>{
+      setDescription(e.target.value);
+
+    }
+    let cat =(e) =>{
+      setCategory(e.target.value);
+    }
+
+    let pri = (e) =>{
+      setPrice(e.target.value);
+      
+    }
+    let magi  = (e) =>{
+      setImageURL(e.target.value);
+
+    }
+
+    let onclickSubmitHandler = () =>{
+      let newProducts ={
+        id:Math.random(),
+        title:title,
+        price:price,
+        description:description,
+        category:category,
+        image:imageURL
+
+
+      }
+
+      setProduct([newProducts,...product])
+
+      
+    }
+
+
+
+
+
     let onDeleteHandler = (id) =>{
-        let newFilterProducts=product.filter((value)=>value.id !=id);
-        setProduct(newFilterProducts);
+        let newFilterProduct=product.filter((value)=>{
+            if (value.id !=id){
+                return value;
+                
+
+            }
+           
+            
+
+        })
+        setProduct(newFilterProduct);
 
     }
     return (
@@ -23,15 +80,46 @@ let Products = () => {
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 className="modal-title" id="exampleModalLabel">Add Product</h5>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div className="modal-body">
-        ...
+        {/* Title */}
+      <div class="mb-3">
+  <label for="first" class="form-label">Title:</label>
+  <input type="text" class="form-control" id="first" placeholder="Enter Title" onChange={mtle}/>
+</div>
+{/* Description */}
+<div class="mb-3">
+  <label for="Dest" class="form-label">Description:</label>
+  <input type="text" class="form-control" id="Dest" placeholder="Enter Description" onChange={desc}/>
+</div>
+
+{/* Category */}
+
+<div class="mb-3">
+  <label for="Price" class="form-label">Category:</label>
+  <input type="text" class="form-control" id="Price" placeholder="Enter Category" onChange={cat}/>
+</div>
+
+{/* Price */}
+
+<div class="mb-3">
+  <label for="title" class="form-label">Price:</label>
+  <input type="number" class="form-control" id="title" placeholder="Enter Price" onChange={pri}/>
+</div>
+
+{/* image */}
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Title:</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Image URL" onChange={magi}/>
+</div>
+
       </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
+        <button type="button" className="btn btn-primary" onClick={onclickSubmitHandler}>Save changes</button>
       </div>
     </div>
   </div>
